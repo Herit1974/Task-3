@@ -49,3 +49,51 @@ It simplifies the **seven-layer OSI model** into four key layers, each handling 
 - Includes technologies like **Ethernet**, **Wi-Fi**, etc.
 
 ---
+
+# TCP Segment Structure
+
+A **TCP segment** consists of two main parts:
+1. **Header** (20 to 60 bytes)
+2. **Data** (payload)
+
+## TCP Header Fields
+
+### 1. **Source Port Address (16-bit)**
+- Identifies the port of the **sending application**.
+
+### 2. **Destination Port Address (16-bit)**
+- Identifies the port of the **receiving application**.
+
+### 3. **Sequence Number (32-bit)**
+- Indicates the **byte number** of the **first byte** in the segment.
+- Helps in reordering segments at the receiver’s end.
+
+### 4. **Acknowledgement Number (32-bit)**
+- Specifies the **next byte** expected from the sender.
+- Used for **cumulative acknowledgment**.
+
+### 5. **Header Length (HLEN - 4-bit)**
+- Length of the TCP header in **4-byte words**.
+- Values range from **5 (20 bytes)** to **15 (60 bytes)**.
+
+### 6. **Control Flags (6 bits)**
+| Flag | Purpose |
+|------|---------|
+| URG  | Urgent pointer is valid |
+| ACK  | Acknowledgment number is valid |
+| PSH  | Push function |
+| RST  | Reset the connection |
+| SYN  | Synchronize sequence numbers |
+| FIN  | Terminate the connection |
+
+### 7. **Window Size (16-bit)**
+- Specifies the **receiver’s buffer size** (flow control).
+
+### 8. **Checksum (16-bit)**
+- **Mandatory** for error checking in TCP.
+
+### 9. **Urgent Pointer (16-bit)**
+- Points to the **last urgent byte** in the data.
+- Only valid if the **URG flag** is set.
+
+---
